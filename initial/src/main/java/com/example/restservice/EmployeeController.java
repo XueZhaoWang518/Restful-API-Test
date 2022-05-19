@@ -18,7 +18,7 @@ public class EmployeeController {
         return employeeService.getEmployeeList();
     }
 
-    @GetMapping("/emoloyees/{employeeId}")
+    @GetMapping("/employees/{employeeId}")
     public Employee getCompanyById(@PathVariable int employeeId) {
         return employeeService.getEmployeeById(employeeId);
     }
@@ -36,7 +36,7 @@ public class EmployeeController {
  */
 
     @PutMapping("/employees/{employeeId}")
-    public void updateCompanies(@PathVariable int employeeId, Employee employee) {
+    public void updateCompanies(@PathVariable int employeeId, @RequestBody Employee employee) {
         employeeService.updateEmployee(employeeId, employee);
     }
 }
