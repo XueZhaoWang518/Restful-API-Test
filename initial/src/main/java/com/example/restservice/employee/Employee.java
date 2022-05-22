@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.example.restservice.employee;
 
 public class Employee {
     private long id;

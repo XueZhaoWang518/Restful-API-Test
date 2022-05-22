@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.example.restservice.company;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ public class CompanyController {
     private CompanyService companyService;
 
 
-
     @GetMapping("/companies")
-    public List<Company> companies(){
+    public List<Company> companies() {
+
         return companyService.getCompanyList();
     }
 

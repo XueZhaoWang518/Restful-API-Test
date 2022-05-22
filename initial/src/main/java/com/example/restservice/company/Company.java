@@ -1,5 +1,6 @@
-package com.example.restservice;
-import com.example.restservice.Employee;
+package com.example.restservice.company;
+
+import com.example.restservice.employee.Employee;
 
 public class Company {
     private int companyId;
@@ -28,7 +29,7 @@ public class Company {
 
     public Employee[] getEmployees() {
         if (this.employees == null) {
-            this.employees=new Employee[200];
+            this.employees = new Employee[200];
         }
         return employees;
     }

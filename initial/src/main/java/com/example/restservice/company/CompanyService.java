@@ -1,16 +1,16 @@
-package com.example.restservice;
+package com.example.restservice.company;
 
-import org.springframework.stereotype.Repository;
+import com.example.restservice.employee.Employee;
+import com.example.restservice.employee.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import com.example.restservice.EmployeeService;
 
 
 @Service
-public class CompanyService {
+public class CompanyService extends EmployeeService{
     /*
     @Repository
     private CompanyRepository companyRepository;
@@ -45,13 +45,14 @@ public class CompanyService {
     public CompanyService() {
         this.setCompanyList();
     }
+
     public Company getCompanyById(int id) {
         AtomicReference<Company> res = new AtomicReference<>();
-       companyList.forEach(item->{
-           if (item.getCompanyId() == id) {
-               res.set(item);
-           }
-       });
+        companyList.forEach(item -> {
+            if (item.getCompanyId() == id) {
+                res.set(item);
+            }
+        });
         return res.get();
     }
 
@@ -69,6 +70,7 @@ public class CompanyService {
             }
         });
     }
+
 
 
 }
