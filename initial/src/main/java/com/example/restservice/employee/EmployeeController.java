@@ -11,26 +11,27 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("/employees")
     public List<Employee> employees() {
-        return employeeService.getEmployeeList();
+        return employeeRepository.getEmployeeList();
     }
 
     @GetMapping("/employees/{employeeId}")
     public Employee getCompanyById(@PathVariable int employeeId) {
-        return employeeService.getEmployeeById(employeeId);
+        return employeeRepository.getEmployeeById(employeeId);
     }
 
     @PostMapping("/employees")
     public void addCompany(@RequestBody Employee employee) {
-        employeeService.addEmployee(employee);
+        employeeRepository.addEmployee(employee);
     }
 
     @PutMapping("/employees/{employeeId}")
     public void updateCompanies(@PathVariable int employeeId, @RequestBody Employee employee) {
-        employeeService.updateEmployee(employeeId, employee);
+        employeeRepository.updateEmployee(employeeId, employee);
     }
 }
 

@@ -2,24 +2,24 @@ package com.example.restservice.company;
 
 import com.example.restservice.employee.Employee;
 
-public class Company {
-    private int companyId;
+public class Company<companyId> {
+    private Long companyId;
     private String companyName;
     private int employeesNumber;
     private Employee[] employees;
 
-    public Company(int companyId, String companyName, int employeesNumber, Employee[] employees) {
+    public Company(Long companyId, String companyName, int employeesNumber, Employee[] employees) {
         this.companyId = companyId;
         this.companyName = companyName;
         this.employeesNumber = employeesNumber;
         this.employees = employees;
     }
 
-    public int getCompanyId() {
+    public  Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
 

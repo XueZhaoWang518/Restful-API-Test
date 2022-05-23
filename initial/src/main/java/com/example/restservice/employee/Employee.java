@@ -1,13 +1,13 @@
 package com.example.restservice.employee;
 
 public class Employee {
-    private long id;
+    private Long id;
     private String name;
     private int age;
     private String gender;
     private int salary;
 
-    public Employee(long id, String name, int age, String gender, int salary) {
+    public Employee(Long id, String name, int age, String gender, int salary) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -48,11 +48,11 @@ public class Employee {
         this.age = age;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
