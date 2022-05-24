@@ -1,12 +1,11 @@
 package com.example.restservice.controller;
 
-import com.example.restservice.service.model.Company;
 import com.example.restservice.repository.CompanyRepository;
 import com.example.restservice.service.CompanyService;
+import com.example.restservice.service.model.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,7 +40,7 @@ public class CompanyController {
 
     @PutMapping("/companies/{companyId}")
     public void updateCompanies(@PathVariable Long companyId, @RequestBody Company company) {
-        companyRepository.updateCompany(companyId, company);
+        companyService.updateCompany(companyId, company);
     }
 }
 

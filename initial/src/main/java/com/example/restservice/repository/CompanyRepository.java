@@ -2,7 +2,6 @@ package com.example.restservice.repository;
 
 import com.example.restservice.service.model.Company;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +23,25 @@ public class CompanyRepository {
         companyList.add(company);
     }
 
-    public void updateCompany(Long id, Company company) {
-        companyList.forEach(item -> {
-            if (item.getCompanyId().equals(id)) {
-                item.setCompanyId(company.getCompanyId());
-                item.setCompanyName(company.getCompanyName());
-                item.setEmployeesNumber(company.getEmployeesNumber());
-                item.setEmployees(company.getEmployees());
-            }
-        });
+
+    public int findCompanyById(Long id){
+        return companyList.indexOf(companyList.stream().filter(item -> item.getCompanyId().equals(id)).findFirst().orElse(null));
     }
+
+    public void updateCompany(Company iniCompany, Company newCompany) {
+        if (newCompany != null) {
+            iniCompany.setCompanyId(newCompany.getCompanyId());
+            iniCompany.setCompanyName(newCompany.getCompanyName());
+            iniCompany.setEmployees(newCompany.getEmployees());
+            iniCompany.setCompanyName(newCompany.getCompanyName());
+            iniCompany.setEmployeesNumber(newCompany.getEmployeesNumber());
+        }
+    }
+
+    public void saveCompany(int index, Company newCompany) {
+        companyList.set(index, newCompany);
+    }
+
     public List<Company> getCompanies(int page, int pageSize) {
         List<Company> res = new ArrayList<>();
         List<Company> companyList = getCompanyList();
