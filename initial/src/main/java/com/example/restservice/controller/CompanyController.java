@@ -1,5 +1,8 @@
-package com.example.restservice.company;
+package com.example.restservice.controller;
 
+import com.example.restservice.service.model.Company;
+import com.example.restservice.repository.CompanyRepository;
+import com.example.restservice.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,19 +33,9 @@ public class CompanyController {
         companyRepository.addCompany(company);
     }
 
-    @GetMapping("/companies/page/{page}/pageSize/{pageSize}")
+    @GetMapping("/companies?page={page}&size={pageSize}")
     public List<Company> getCompanies(@PathVariable int page, @PathVariable int pageSize) {
-        List<Company> res = new ArrayList<>();
-        List<Company> companyList = companyRepository.getCompanyList();
-        int size = companyList.size();
-        int m = size / pageSize;
-        if ((m+1) >= pageSize) {
-            int initialPage = pageSize * (page - 1);
-            for (int i = 0; i < pageSize; i++) {
-                res.add(companyList.get(initialPage + i));
-            }
-        }
-        return res;
+        return companyRepository.getCompanies(page, pageSize);
     }
 
 

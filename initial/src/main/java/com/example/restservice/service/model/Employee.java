@@ -1,4 +1,4 @@
-package com.example.restservice.employee;
+package com.example.restservice.service.model;
 
 public class Employee {
     private Long id;

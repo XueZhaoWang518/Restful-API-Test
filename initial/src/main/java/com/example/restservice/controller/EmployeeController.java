@@ -1,5 +1,8 @@
-package com.example.restservice.employee;
+package com.example.restservice.controller;
 
+import com.example.restservice.service.model.Employee;
+import com.example.restservice.repository.EmployeeRepository;
+import com.example.restservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

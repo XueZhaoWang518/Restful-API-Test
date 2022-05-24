@@ -1,5 +1,6 @@
-package com.example.restservice.employee;
+package com.example.restservice.repository;
 
+import com.example.restservice.service.model.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

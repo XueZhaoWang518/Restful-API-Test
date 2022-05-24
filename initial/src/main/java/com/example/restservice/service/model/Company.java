@@ -1,6 +1,4 @@
-package com.example.restservice.company;
-
-import com.example.restservice.employee.Employee;
+package com.example.restservice.service.model;
 
 public class Company<companyId> {
     private Long companyId;

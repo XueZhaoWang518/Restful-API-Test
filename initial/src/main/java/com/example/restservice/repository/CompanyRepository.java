@@ -1,12 +1,11 @@
-package com.example.restservice.company;
+package com.example.restservice.repository;
 
-import com.example.restservice.employee.Employee;
-import com.example.restservice.employee.EmployeeService;
+import com.example.restservice.service.model.Company;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Repository
 public class CompanyRepository {
@@ -18,7 +17,7 @@ public class CompanyRepository {
     }
 
     public Company getCompanyById(Long id) {
-        return companyList.stream().filter(item -> item.getCompanyId() == id).findFirst().map(item -> item).orElse(null);
+        return companyList.stream().filter(item -> item.getCompanyId().equals (id)).findFirst().orElse(null);
     }
 
     public void addCompany(Company company) {
@@ -27,12 +26,25 @@ public class CompanyRepository {
 
     public void updateCompany(Long id, Company company) {
         companyList.forEach(item -> {
-            if (item.getCompanyId() == id) {
+            if (item.getCompanyId().equals(id)) {
                 item.setCompanyId(company.getCompanyId());
                 item.setCompanyName(company.getCompanyName());
                 item.setEmployeesNumber(company.getEmployeesNumber());
                 item.setEmployees(company.getEmployees());
             }
         });
+    }
+    public List<Company> getCompanies(int page, int pageSize) {
+        List<Company> res = new ArrayList<>();
+        List<Company> companyList = getCompanyList();
+        int size = companyList.size();
+        int m = size / pageSize;
+        if ((m+1) >= pageSize) {
+            int initialPage = pageSize * (page - 1);
+            for (int i = 0; i < pageSize; i++) {
+                res.add(companyList.get(initialPage + i));
+            }
+        }
+        return res;
     }
 }
